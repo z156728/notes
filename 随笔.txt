@@ -1,13 +1,13 @@
-¨€js×ª»»ÈÕÆÚ¸ñÊ½·½·¨
+â–ˆjsè½¬æ¢æ—¥æœŸæ ¼å¼æ–¹æ³•
 Date.prototype.format = function(fmt) { 
      var o = { 
-        "M+" : this.getMonth()+1,                 //ÔÂ·İ 
-        "d+" : this.getDate(),                    //ÈÕ 
-        "h+" : this.getHours(),                   //Ğ¡Ê± 
-        "m+" : this.getMinutes(),                 //·Ö 
-        "s+" : this.getSeconds(),                 //Ãë 
-        "q+" : Math.floor((this.getMonth()+3)/3), //¼¾¶È 
-        "S"  : this.getMilliseconds()             //ºÁÃë 
+        "M+" : this.getMonth()+1,                 //æœˆä»½ 
+        "d+" : this.getDate(),                    //æ—¥ 
+        "h+" : this.getHours(),                   //å°æ—¶ 
+        "m+" : this.getMinutes(),                 //åˆ† 
+        "s+" : this.getSeconds(),                 //ç§’ 
+        "q+" : Math.floor((this.getMonth()+3)/3), //å­£åº¦ 
+        "S"  : this.getMilliseconds()             //æ¯«ç§’ 
     }; 
     if(/(y+)/.test(fmt)) {
             fmt=fmt.replace(RegExp.$1, (this.getFullYear()+"").substr(4 - RegExp.$1.length)); 
@@ -19,166 +19,169 @@ Date.prototype.format = function(fmt) {
      }
     return fmt; 
 }
-µ÷ÓÃÒ»:  var time1 = new Date().format("yyyy-MM-dd hh:mm:ss");	   
-	 console.log(time1);	//Êä³ö½á¹û 2014-06-08 12:35:48
-µ÷ÓÃ¶ş:  var time2 = new Date().format("yyyy-MM-dd");	  --------------°æ±¾¶ş£ºvar time1 = eval('new '+ jss[i].data.substr(1,jss[i].data.length-2)).format("yyyy-MM-dd");
-	 console.log(time2);	//Êä³ö½á¹û 2018-05-12
+è°ƒç”¨ä¸€:  var time1 = new Date().format("yyyy-MM-dd hh:mm:ss");	   
+	 console.log(time1);	//è¾“å‡ºç»“æœ 2014-06-08 12:35:48
+è°ƒç”¨äºŒ:  var time2 = new Date().format("yyyy-MM-dd");	  --------------ç‰ˆæœ¬äºŒï¼švar time1 = eval('new '+ jss[i].data.substr(1,jss[i].data.length-2)).format("yyyy-MM-dd");
+	 console.log(time2);	//è¾“å‡ºç»“æœ 2018-05-12
 
-  ¨|½«Ö¸¶¨µÄÈÕÆÚ×ª»»³ÉÄêÔÂÈÕµÄ¸ñÊ½
+  â–…å°†æŒ‡å®šçš„æ—¥æœŸè½¬æ¢æˆå¹´æœˆæ—¥çš„æ ¼å¼
 	 var oldTime = (new Date("2012/12/25 20:11:11")).getTime();
    	 var curTime = new Date(oldTime).format("yyyy-MM-dd");
-   	 console.log(curTime);	 //Êä³ö½á¹û 2012-05-17
-  ¨|½«Ê±¼ä´Á×ª»»ÎªÄêÔÂÈÕ¸ñÊ½
+   	 console.log(curTime);	 //è¾“å‡ºç»“æœ 2012-05-17
+  â–…å°†æ—¶é—´æˆ³è½¬æ¢ä¸ºå¹´æœˆæ—¥æ ¼å¼
 	 var da = 1402233166999;
     	 da = new Date(da);
-    	 var year = da.getFullYear()+'Äê';
-   	 var month = da.getMonth()+1+'ÔÂ';
-   	 var date = da.getDate()+'ÈÕ';
-   	 console.log([year,month,date].join('-'));		//Êä³ö½á¹û  2014Äê-6ÔÂ-15ÈÕ
+    	 var year = da.getFullYear()+'å¹´';
+   	 var month = da.getMonth()+1+'æœˆ';
+   	 var date = da.getDate()+'æ—¥';
+   	 console.log([year,month,date].join('-'));		//è¾“å‡ºç»“æœ  2014å¹´-6æœˆ-15æ—¥
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------
-¨€Ô­ÉújsµÄajax·½·¨
+â–ˆåŸç”Ÿjsçš„ajaxæ–¹æ³•
 	<script>
 	    btn.onclick=function(){
 
-   	    var xhr=new XMLHttpRequest();        //´´½¨xhr¶ÔÏó--Á¥ÊôXML
+   	    var xhr=new XMLHttpRequest();        //åˆ›å»ºxhrå¯¹è±¡--éš¶å±XML
 
-	    xhr.onreadystatechange=function(){  //ÊÂ¼ş¼àÌıÇëÇóÖ´ĞĞµ½ÄÄÒ»²½
+	    xhr.onreadystatechange=function(){  //äº‹ä»¶ç›‘å¬è¯·æ±‚æ‰§è¡Œåˆ°å“ªä¸€æ­¥
 
   	    if(xhr.readyState===4){
 
             if(xhr.status===200){
 
-  	    var header=xhr.getAllResponseHeaders();  //»ñµÃËùÓĞÏìÓ¦Í·
+  	    var header=xhr.getAllResponseHeaders();  //è·å¾—æ‰€æœ‰å“åº”å¤´
 
-  	    doResponse(xhr); //ÏìÓ¦³É¹¦µ÷ÓÃ´¦ÀíÏìÓ¦Êı¾İº¯Êı
+  	    doResponse(xhr); //å“åº”æˆåŠŸè°ƒç”¨å¤„ç†å“åº”æ•°æ®å‡½æ•°
 
       	     }else{
 
-             alert("ÏìÓ¦Òì³£");  //ÏìÓ¦Ê§°Ü
+             alert("å“åº”å¼‚å¸¸");  //å“åº”å¤±è´¥
 
        	     }
 
            }
 	};
 
-	xhr.open("get","1.php",true); 	//µÚÒ»¸ö²ÎÊıÇëÇó·½·¨£¨get/post£©,ÒªÇëÇóÒ³ÃæµÄµØÖ·(url),µÚÈı¸ö²ÎÊıÉèÖÃÊÇ·ñÒì²½,(true/false)
+	xhr.open("get","1.php",true); 	//ç¬¬ä¸€ä¸ªå‚æ•°è¯·æ±‚æ–¹æ³•ï¼ˆget/postï¼‰,è¦è¯·æ±‚é¡µé¢çš„åœ°å€(url),ç¬¬ä¸‰ä¸ªå‚æ•°è®¾ç½®æ˜¯å¦å¼‚æ­¥,(true/false)
 
-	xhr.setRequestHeader("Content-Type","multipart/form-data/");	//ÉèÖÃÇëÇóÍ·£¬ĞèÒª¾ÍÉèÖÃ£¬²»ĞèÒª¿ÉÃ»ÓĞ
+	xhr.setRequestHeader("Content-Type","multipart/form-data/");	//è®¾ç½®è¯·æ±‚å¤´ï¼Œéœ€è¦å°±è®¾ç½®ï¼Œä¸éœ€è¦å¯æ²¡æœ‰
 
-	xhr.send(null);   	//²ÎÊıÎªÒª´«µİµÄÊı¾İ£¬¿É¼üÖµ¶ÔµÄĞÎÊ½key=value£¬Ò²¿ÉÒÔÊÇ¶ÔÏóµÄĞÎÊ½£ûkey:value£ı£¬Ã»ÓĞÔònul
+	xhr.send(null);   	//å‚æ•°ä¸ºè¦ä¼ é€’çš„æ•°æ®ï¼Œå¯é”®å€¼å¯¹çš„å½¢å¼key=valueï¼Œä¹Ÿå¯ä»¥æ˜¯å¯¹è±¡çš„å½¢å¼ï½›key:valueï½ï¼Œæ²¡æœ‰åˆ™nul
 
 	function doResponse(xhr){
 
-    	 console.log(xhr);	//´Óxhr¶ÔÏóÖĞ»ñÈ¡ÏìÓ¦Êı¾İ£¬ÔÚÕâ×öÏàÓ¦´¦Àí
+    	 console.log(xhr);	//ä»xhrå¯¹è±¡ä¸­è·å–å“åº”æ•°æ®ï¼Œåœ¨è¿™åšç›¸åº”å¤„ç†
 
     	}
      }
    </script>
 
-  ¨|jQueryµÄajax·½·¨
+  â–…jQueryçš„ajaxæ–¹æ³•
 	   $.ajax({ 
-     		type : "get", 	//Ìá½»·½Ê½ 
-     		url : "",	//Â·¾¶ 
-		async£ºtrue£¬	//Ä¬ÈÏÖµÎªtrue£¬ËùÓĞÇëÇóÊÇÒì²½£¬ÒªÇóÊÇBoolÀàĞÍµÄ²ÎÊı£¬Èç¹ûĞèÒª·¢ËÍÍ¬²½ÇëÇó£¬½«´ËÏîÉèÖÃÎªfalse
-		dataType£ºJSON/JSONP£¬//·µ»ØJSONÊı¾İ/JSONP¸ñÊ½¡£Ê¹ÓÃSONPĞÎÊ½µ÷ÓÃº¯ÊıÊ±£¬JQuery½«×Ô¶¯Ìæ»»ºóÒ»¸ö¡°?¡±ÎªÕıÈ·µÄº¯ÊıÃû£¬ÒÔÖ´ĞĞ»Øµ÷º¯Êı
-     		data : { },	//´«Êäµ½ºóÌ¨½Ó¿ÚµÄÊı¾İ£¬ÕâÀïÊ¹ÓÃµÄÊÇJson¸ñÊ½½øĞĞ´«Êä 
-     		success : function(result) { }£¬//·µ»ØÊı¾İ¸ù¾İ½á¹û½øĞĞÏàÓ¦µÄ´¦Àí    	     
-		error£ºfunction£¨result£©{ } 
+     		type : "get", 	//æäº¤æ–¹å¼ 
+     		url : "",	//è·¯å¾„ 
+		asyncï¼štrueï¼Œ	//é»˜è®¤å€¼ä¸ºtrueï¼Œæ‰€æœ‰è¯·æ±‚æ˜¯å¼‚æ­¥ï¼Œè¦æ±‚æ˜¯Boolç±»å‹çš„å‚æ•°ï¼Œå¦‚æœéœ€è¦å‘é€åŒæ­¥è¯·æ±‚ï¼Œå°†æ­¤é¡¹è®¾ç½®ä¸ºfalse
+		dataTypeï¼šJSON/JSONPï¼Œ//è¿”å›JSONæ•°æ®/JSONPæ ¼å¼ã€‚ä½¿ç”¨SONPå½¢å¼è°ƒç”¨å‡½æ•°æ—¶ï¼ŒJQueryå°†è‡ªåŠ¨æ›¿æ¢åä¸€ä¸ªâ€œ?â€ä¸ºæ­£ç¡®çš„å‡½æ•°åï¼Œä»¥æ‰§è¡Œå›è°ƒå‡½æ•°
+     		data : { },	//ä¼ è¾“åˆ°åå°æ¥å£çš„æ•°æ®ï¼Œè¿™é‡Œä½¿ç”¨çš„æ˜¯Jsonæ ¼å¼è¿›è¡Œä¼ è¾“ 
+     		success : function(result) { }ï¼Œ//è¿”å›æ•°æ®æ ¹æ®ç»“æœè¿›è¡Œç›¸åº”çš„å¤„ç†    	     
+		errorï¼šfunctionï¼ˆresultï¼‰{ } 
     	    });
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------
-¨€JSµÄ--×Ö·û´®--·Ö¸îºÍ½ØÈ¡
-     ¨|substring()	
-	substring(start,end)±íÊ¾´Óstartµ½endÖ®¼äµÄ×Ö·û´®
-	Àı£ºvar src="images/off_1.png";
-	  console.log(src.substring(7,10));	//µ¯³öÖµÎª£ºoff
-     ¨|substr()
-	substr(start,length)±íÊ¾´ÓstartÎ»ÖÃ¿ªÊ¼£¬½ØÈ¡length³¤¶ÈµÄ×Ö·û´®¡£
-	Àı£ºvar src="images/off_1.png";
-	  alert(src.substr(7,3));		//µ¯³öÖµÎª£ºoff  
-     ¨|split()
-	Ê¹ÓÃÒ»¸öÖ¸¶¨µÄ·Ö¸ô·û°ÑÒ»¸ö×Ö·û´®·Ö¸î´æ´¢µ½Êı×é
-	Àı£ºstr="jpg|bmp|gif|ico|png";
-	    arr=theString.split("|");		//arrÊä³öÊÇÒ»¸ö°üº¬×Ö·ûÖµ"jpg"¡¢"bmp"¡¢"gif"¡¢"ico"ºÍ"png"µÄÊı×é
-     ¨|Join()
-	Ê¹ÓÃÄúÑ¡ÔñµÄ·Ö¸ô·û½«Ò»¸öÊı×éºÏ²¢ÎªÒ»¸ö×Ö·û´®
-	Àı£ºvar delimitedString=myArray.join(delimiter);
+â–ˆJSçš„--å­—ç¬¦ä¸²--åˆ†å‰²å’Œæˆªå–
+     â–…substring()	
+	substring(start,end)è¡¨ç¤ºä»startåˆ°endä¹‹é—´çš„å­—ç¬¦ä¸²
+	ä¾‹ï¼švar src="images/off_1.png";
+	  console.log(src.substring(7,10));	//å¼¹å‡ºå€¼ä¸ºï¼šoff
+     â–…substr()
+	substr(start,length)è¡¨ç¤ºä»startä½ç½®å¼€å§‹ï¼Œæˆªå–lengthé•¿åº¦çš„å­—ç¬¦ä¸²ã€‚
+	ä¾‹ï¼švar src="images/off_1.png";
+	  alert(src.substr(7,3));		//å¼¹å‡ºå€¼ä¸ºï¼šoff  
+     â–…split()
+	ä½¿ç”¨ä¸€ä¸ªæŒ‡å®šçš„åˆ†éš”ç¬¦æŠŠä¸€ä¸ªå­—ç¬¦ä¸²åˆ†å‰²å­˜å‚¨åˆ°æ•°ç»„
+	ä¾‹ï¼šstr="jpg|bmp|gif|ico|png";
+	    arr=theString.split("|");		//arrè¾“å‡ºæ˜¯ä¸€ä¸ªåŒ…å«å­—ç¬¦å€¼"jpg"ã€"bmp"ã€"gif"ã€"ico"å’Œ"png"çš„æ•°ç»„
+     â–…Join()
+	ä½¿ç”¨æ‚¨é€‰æ‹©çš„åˆ†éš”ç¬¦å°†ä¸€ä¸ªæ•°ç»„åˆå¹¶ä¸ºä¸€ä¸ªå­—ç¬¦ä¸²
+	ä¾‹ï¼švar delimitedString=myArray.join(delimiter);
 	    var myList=new Array("jpg","bmp","gif","ico","png");
-	    var portableList=myList.join("|");	//Êä³ö½á¹ûÊÇjpg|bmp|gif|ico|png
-     ¨|indexOf()
-	·µ»Ø×Ö·û´®ÖĞÆ¥Åä×Ó´®µÄµÚÒ»¸ö×Ö·ûµÄÏÂ±ê
-	Àı£ºvar myString="JavaScript";
-	    var w=myString.indexOf("v");	//wÊä³öconsole.log£¨2£©£»
-	    var x=myString.indexOf("S");x will be 4	//xÊä³öconsole.log£¨4£©£»
-	    var y=myString.indexOf("Script");y will also be 4	//yÊä³öconsole.log£¨4£©£»
-	    var z=myString.indexOf("key");z will be -1 		//zÊä³öconsole.log£¨-1£©£»
-     ¨|lastIndexOf()---------£¿£¿£¿£¿£¿£¿£¿£¿£¿£¿£¿£¿
-	lastIndexOf()·½·¨·µ»Ø´ÓÓÒÏò×ó³öÏÖÄ³¸ö×Ö·û»ò×Ö·û´®µÄÊ×¸ö×Ö·ûË÷ÒıÖµ£¨ÓëindexOfÏà·´£©	·µ»Ø×Ö·û´®Ë÷ÒıÖµ
-	Àı£ºvar src="images/off_1.png";
-	    alert(src.lastIndexOf('/'));	//µ¯³öÖµÎª6
-	    alert(src.lastIndexOf('g'));	//µ¯³öÖµÎª15
+	    var portableList=myList.join("|");	//è¾“å‡ºç»“æœæ˜¯jpg|bmp|gif|ico|png
+     â–…indexOf()
+	è¿”å›å­—ç¬¦ä¸²ä¸­åŒ¹é…å­ä¸²çš„ç¬¬ä¸€ä¸ªå­—ç¬¦çš„ä¸‹æ ‡
+	ä¾‹ï¼švar myString="JavaScript";
+	    var w=myString.indexOf("v");	//wè¾“å‡ºconsole.logï¼ˆ2ï¼‰ï¼›
+	    var x=myString.indexOf("S");x will be 4	//xè¾“å‡ºconsole.logï¼ˆ4ï¼‰ï¼›
+	    var y=myString.indexOf("Script");y will also be 4	//yè¾“å‡ºconsole.logï¼ˆ4ï¼‰ï¼›
+	    var z=myString.indexOf("key");z will be -1 		//zè¾“å‡ºconsole.logï¼ˆ-1ï¼‰ï¼›
+     â–…lastIndexOf()---------ï¼Ÿï¼Ÿï¼Ÿï¼Ÿï¼Ÿï¼Ÿï¼Ÿï¼Ÿï¼Ÿï¼Ÿï¼Ÿï¼Ÿ
+	lastIndexOf()æ–¹æ³•è¿”å›ä»å³å‘å·¦å‡ºç°æŸä¸ªå­—ç¬¦æˆ–å­—ç¬¦ä¸²çš„é¦–ä¸ªå­—ç¬¦ç´¢å¼•å€¼ï¼ˆä¸indexOfç›¸åï¼‰	è¿”å›å­—ç¬¦ä¸²ç´¢å¼•å€¼
+	ä¾‹ï¼švar src="images/off_1.png";
+	    alert(src.lastIndexOf('/'));	//å¼¹å‡ºå€¼ä¸º6
+	    alert(src.lastIndexOf('g'));	//å¼¹å‡ºå€¼ä¸º15
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------
-¨€jsÊı×é·½·¨
-   ¨|´´½¨Êı×é·½Ê½£º
-    Ò»£ºvar arr1 = new Array(); //´´½¨Ò»¸ö¿ÕÊı×é
-        var arr2 = new Array(20); // ´´½¨Ò»¸ö°üº¬20ÏîµÄÊı×é
-        var arr3 = new Array("lily","lucy","Tom"); // ´´½¨Ò»¸ö°üº¬3¸ö×Ö·û´®µÄÊı×é
-    ¶ş£ºvar arr4 = []; //´´½¨Ò»¸ö¿ÕÊı×é
-	var arr5 = [20]; // ´´½¨Ò»¸ö°üº¬1ÏîµÄÊı×é
-	var arr6 = ["lily","lucy","Tom"]; // ´´½¨Ò»¸ö°üº¬3¸ö×Ö·û´®µÄÊı×é
-   ¨{join()
-	½«Êı×éµÄÔªËØ×éÆğÒ»¸ö×Ö·û´®£¬ÒÔÄ³ÔªËØÎª·Ö¸ô·û£¬Ê¡ÂÔµÄ»°ÔòÓÃÄ¬ÈÏÓÃ¶ººÅÎª·Ö¸ô·û£¬¸Ã·½·¨Ö»½ÓÊÕÒ»¸ö²ÎÊı£º¼´·Ö¸ô·û
-	Àı£ºvar arr = [1,2,3];
+â–ˆjsæ•°ç»„æ–¹æ³•
+   â–…åˆ›å»ºæ•°ç»„æ–¹å¼ï¼š
+    ä¸€ï¼švar arr1 = new Array(); //åˆ›å»ºä¸€ä¸ªç©ºæ•°ç»„
+        var arr2 = new Array(20); // åˆ›å»ºä¸€ä¸ªåŒ…å«20é¡¹çš„æ•°ç»„
+        var arr3 = new Array("lily","lucy","Tom"); // åˆ›å»ºä¸€ä¸ªåŒ…å«3ä¸ªå­—ç¬¦ä¸²çš„æ•°ç»„
+    äºŒï¼švar arr4 = []; //åˆ›å»ºä¸€ä¸ªç©ºæ•°ç»„
+	var arr5 = [20]; // åˆ›å»ºä¸€ä¸ªåŒ…å«1é¡¹çš„æ•°ç»„
+	var arr6 = ["lily","lucy","Tom"]; // åˆ›å»ºä¸€ä¸ªåŒ…å«3ä¸ªå­—ç¬¦ä¸²çš„æ•°ç»„
+   â–„join()
+	å°†æ•°ç»„çš„å…ƒç´ ç»„èµ·ä¸€ä¸ªå­—ç¬¦ä¸²ï¼Œä»¥æŸå…ƒç´ ä¸ºåˆ†éš”ç¬¦ï¼Œçœç•¥çš„è¯åˆ™ç”¨é»˜è®¤ç”¨é€—å·ä¸ºåˆ†éš”ç¬¦ï¼Œè¯¥æ–¹æ³•åªæ¥æ”¶ä¸€ä¸ªå‚æ•°ï¼šå³åˆ†éš”ç¬¦
+	ä¾‹ï¼švar arr = [1,2,3];
 	    console.log(arr.join()); // 1,2,3
 	    console.log(arr.join("-")); // 1-2-3
-   ¨{push()ºÍpop()
-	push(): ¿ÉÒÔ½ÓÊÕÈÎÒâÊıÁ¿µÄ²ÎÊı£¬°ÑËüÃÇÖğ¸öÌí¼Óµ½Êı×éÄ©Î²£¬²¢·µ»ØĞŞ¸ÄºóÊı×éµÄ³¤¶È¡£ 
-	pop()£ºÊı×éÄ©Î²ÒÆ³ı×îºóÒ»Ïî£¬¼õÉÙÊı×éµÄ length Öµ£¬È»ºó·µ»ØÒÆ³ıµÄÏî¡£
-	Àı£ºvar arr = ["Lily","lucy","Tom"];
+   â–„push()å’Œpop()
+	push(): å¯ä»¥æ¥æ”¶ä»»æ„æ•°é‡çš„å‚æ•°ï¼ŒæŠŠå®ƒä»¬é€ä¸ªæ·»åŠ åˆ°æ•°ç»„æœ«å°¾ï¼Œå¹¶è¿”å›ä¿®æ”¹åæ•°ç»„çš„é•¿åº¦ã€‚ 
+	pop()ï¼šæ•°ç»„æœ«å°¾ç§»é™¤æœ€åä¸€é¡¹ï¼Œå‡å°‘æ•°ç»„çš„ length å€¼ï¼Œç„¶åè¿”å›ç§»é™¤çš„é¡¹ã€‚
+	ä¾‹ï¼švar arr = ["Lily","lucy","Tom"];
 	    var count = arr.push("Jack","Sean");
 	    console.log(count); // 5
 	    console.log(arr); // ["Lily", "lucy", "Tom", "Jack", "Sean"]
 	    var item = arr.pop();
 	    console.log(item); // Sean
 	    console.log(arr); // ["Lily", "lucy", "Tom", "Jack"]
-   ¨{sort()
-	°´ÉıĞòÅÅÁĞÊı×éÏî¡ª¡ª¼´×îĞ¡µÄÖµÎ»ÓÚ×îÇ°Ãæ£¬×î´óµÄÖµÅÅÔÚ×îºóÃæ¡£
+   â–„sort()
+	æŒ‰å‡åºæ’åˆ—æ•°ç»„é¡¹â€”â€”å³æœ€å°çš„å€¼ä½äºæœ€å‰é¢ï¼Œæœ€å¤§çš„å€¼æ’åœ¨æœ€åé¢ã€‚
 
-   ¨{concat()	
-	½«²ÎÊıÌí¼Óµ½Ô­Êı×éÖĞ¡£Õâ¸ö·½·¨»áÏÈ´´½¨µ±Ç°Êı×éÒ»¸ö¸±±¾£¬È»ºó½«½ÓÊÕµ½µÄ²ÎÊıÌí¼Óµ½Õâ¸ö¸±±¾µÄÄ©Î²£¬×îºó·µ»ØĞÂ¹¹½¨µÄÊı×é¡£ÔÚÃ»ÓĞ¸ø concat()·½·¨´«µİ²ÎÊıµÄÇé¿öÏÂ£¬ËüÖ»		ÊÇ¸´ÖÆµ±Ç°Êı×é²¢·µ»Ø¸±±¾¡£
-	Àı£ºvar arr = [1,3,5,7];
+   â–„concat()	
+	å°†å‚æ•°æ·»åŠ åˆ°åŸæ•°ç»„ä¸­ã€‚è¿™ä¸ªæ–¹æ³•ä¼šå…ˆåˆ›å»ºå½“å‰æ•°ç»„ä¸€ä¸ªå‰¯æœ¬ï¼Œç„¶åå°†æ¥æ”¶åˆ°çš„å‚æ•°æ·»åŠ åˆ°è¿™ä¸ªå‰¯æœ¬çš„æœ«å°¾ï¼Œæœ€åè¿”å›æ–°æ„å»ºçš„æ•°ç»„ã€‚åœ¨æ²¡æœ‰ç»™ concat()æ–¹æ³•ä¼ é€’å‚æ•°çš„æƒ…å†µä¸‹ï¼Œå®ƒåª		æ˜¯å¤åˆ¶å½“å‰æ•°ç»„å¹¶è¿”å›å‰¯æœ¬ã€‚
+	ä¾‹ï¼švar arr = [1,3,5,7];
 	    var arrCopy = arr.concat(9,[11,13]);
 	    console.log(arrCopy); //[1, 3, 5, 7, 9, 11, 13]
-	    console.log(arr); // [1, 3, 5, 7](Ô­Êı×éÎ´±»ĞŞ¸Ä)
-   ¨{indexOf()ºÍ lastIndexOf()
-	indexOf()£º½ÓÊÕÁ½¸ö²ÎÊı£ºÒª²éÕÒµÄÏîºÍ£¨¿ÉÑ¡µÄ£©±íÊ¾²éÕÒÆğµãÎ»ÖÃµÄË÷Òı¡£ÆäÖĞ£¬ ´ÓÊı×éµÄ¿ªÍ·£¨Î»ÖÃ 0£©¿ªÊ¼Ïòºó²éÕÒ¡£ 
-	lastIndexOf£º½ÓÊÕÁ½¸ö²ÎÊı£ºÒª²éÕÒµÄÏîºÍ£¨¿ÉÑ¡µÄ£©±íÊ¾²éÕÒÆğµãÎ»ÖÃµÄË÷Òı¡£ÆäÖĞ£¬ ´ÓÊı×éµÄÄ©Î²¿ªÊ¼ÏòÇ°²éÕÒ¡£
-	Àı£ºvar arr = [1,3,5,7,7,5,3,1];
+	    console.log(arr); // [1, 3, 5, 7](åŸæ•°ç»„æœªè¢«ä¿®æ”¹)
+   â–„indexOf()å’Œ lastIndexOf()
+	indexOf()ï¼šæ¥æ”¶ä¸¤ä¸ªå‚æ•°ï¼šè¦æŸ¥æ‰¾çš„é¡¹å’Œï¼ˆå¯é€‰çš„ï¼‰è¡¨ç¤ºæŸ¥æ‰¾èµ·ç‚¹ä½ç½®çš„ç´¢å¼•ã€‚å…¶ä¸­ï¼Œ ä»æ•°ç»„çš„å¼€å¤´ï¼ˆä½ç½® 0ï¼‰å¼€å§‹å‘åæŸ¥æ‰¾ã€‚ 
+	lastIndexOfï¼šæ¥æ”¶ä¸¤ä¸ªå‚æ•°ï¼šè¦æŸ¥æ‰¾çš„é¡¹å’Œï¼ˆå¯é€‰çš„ï¼‰è¡¨ç¤ºæŸ¥æ‰¾èµ·ç‚¹ä½ç½®çš„ç´¢å¼•ã€‚å…¶ä¸­ï¼Œ ä»æ•°ç»„çš„æœ«å°¾å¼€å§‹å‘å‰æŸ¥æ‰¾ã€‚
+	ä¾‹ï¼švar arr = [1,3,5,7,7,5,3,1];
 	    console.log(arr.indexOf(5)); //2
 	    console.log(arr.lastIndexOf(5)); //5
 	    console.log(arr.indexOf(5,2)); //2
 	    console.log(arr.lastIndexOf(5,4)); //2
 	    console.log(arr.indexOf("5")); //-1
-   ¨{forEach()
-	¶ÔÊı×é½øĞĞ±éÀúÑ­»·£¬¶ÔÊı×éÖĞµÄÃ¿Ò»ÏîÔËĞĞ¸ø¶¨º¯Êı¡£Õâ¸ö·½·¨Ã»ÓĞ·µ»ØÖµ¡£²ÎÊı¶¼ÊÇfunctionÀàĞÍ£¬Ä¬ÈÏÓĞ´«²Î£¬²ÎÊı·Ö±ğÎª£º±éÀúµÄÊı×éÄÚÈİ£»µÚ¶ÔÓ¦µÄÊı×éË÷Òı£¬Êı×é±¾Éí¡£
-	Àı£ºvar arr = [1, 2, 3, 4, 5];
+   â–„forEach()
+	å¯¹æ•°ç»„è¿›è¡Œéå†å¾ªç¯ï¼Œå¯¹æ•°ç»„ä¸­çš„æ¯ä¸€é¡¹è¿è¡Œç»™å®šå‡½æ•°ã€‚è¿™ä¸ªæ–¹æ³•æ²¡æœ‰è¿”å›å€¼ã€‚å‚æ•°éƒ½æ˜¯functionç±»å‹ï¼Œé»˜è®¤æœ‰ä¼ å‚ï¼Œå‚æ•°åˆ†åˆ«ä¸ºï¼šéå†çš„æ•°ç»„å†…å®¹ï¼›ç¬¬å¯¹åº”çš„æ•°ç»„ç´¢å¼•ï¼Œæ•°ç»„æœ¬èº«ã€‚
+	ä¾‹ï¼švar arr = [1, 2, 3, 4, 5];
 	    arr.forEach(function(x, index, a){
 	    	console.log(x + '|' + index + '|' + (a === arr));
 	    });
-		// Êä³öÎª£º
+		// è¾“å‡ºä¸ºï¼š
 		// 1|0|true
 		// 2|1|true
 		// 3|2|true
 		// 4|3|true
 		// 5|4|true
-   ¨{filter()
-	¹ıÂË¡±¹¦ÄÜ£¬Êı×éÖĞµÄÃ¿Ò»ÏîÔËĞĞ¸ø¶¨º¯Êı£¬·µ»ØÂú×ã¹ıÂËÌõ¼ş×é³ÉµÄÊı×é¡£
-	Àı£ºvar arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+   â–„filter()
+	è¿‡æ»¤â€åŠŸèƒ½ï¼Œæ•°ç»„ä¸­çš„æ¯ä¸€é¡¹è¿è¡Œç»™å®šå‡½æ•°ï¼Œè¿”å›æ»¡è¶³è¿‡æ»¤æ¡ä»¶ç»„æˆçš„æ•°ç»„ã€‚
+	ä¾‹ï¼švar arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 	    	var arr2 = arr.filter(function(x, index) {
 		return index % 3 === 0 || x >= 8;
 	    }); 
 	    console.log(arr2); //[1, 4, 7, 8, 9, 10]
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------
-¨€for in  ºÍ for of µÄÇø±ğÁªÏµ
-   ¨{
-	
+â–ˆfor in  å’Œ for of çš„åŒºåˆ«è”ç³»
+   â–„
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+â–ˆå½“å…ƒç´ ä½¿ç”¨transform: translate(-50% , -50%);å±…ä¸­æ–¹å¼æ—¶ï¼Œå¦‚æœå…ƒç´ å°ºå¯¸æ˜¯å•æ•°ï¼Œä¼šå¯¼è‡´å…ƒç´ æ¨¡ç³Šï¼Œï¼Œï¼Œï¼Œ
