@@ -190,4 +190,4 @@ Date.prototype.format = function(fmt) {
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------
 █使用flex布局时，justify-content 多行时，最后一行效果不对，可用解决办法
 	1. 在列表结尾增加一系列空值：并设置 li:empty {height: 0; border: none;}
-	2. 给父容器添加after伪元素  设置 .container:after {content: "";flex: auto;}
+	2. 给父容器添加after伪元素  设置 .container:after {content: "";flex: auto;}  （有轻微局限性）
